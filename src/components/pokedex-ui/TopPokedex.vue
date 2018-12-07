@@ -26,8 +26,6 @@ export default {
   width: 100%;
   height: 80px;
   border-top-left-radius: 40px;
-  position: absolute;
-  top: 0;
 }
 
 .leds-container {

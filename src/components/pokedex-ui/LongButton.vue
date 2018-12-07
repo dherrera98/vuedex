@@ -1,7 +1,7 @@
 <template>
-  <div :class="color">
+  <button :class="color">
 
-  </div>
+  </button>
 </template>
 
 <script>
@@ -16,10 +16,10 @@ export default {
 <style lang="scss" scoped>
 @import "../../assets/sass/_variables.scss";
 
-div {
+button {
   width: 70px;
   height: 16px;
-  border-radius: 7%;
+  border-radius: 8px;
   border: $border-gray;
   background-color: $retro-orange;
 }
