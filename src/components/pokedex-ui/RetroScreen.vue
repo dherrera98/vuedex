@@ -1,12 +1,16 @@
 <template>
   <div>
-    <span>135</span>
+    <span>{{numDex}}</span>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-  name: "RetroScreen"
+  name: "RetroScreen",
+  computed: {
+    ...mapState(["numDex"])
+  }
 };
 </script>
 
