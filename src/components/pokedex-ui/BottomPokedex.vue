@@ -29,7 +29,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  width: 100vw;
+  width: 360px;
+  padding: 0 10px;
+  border-bottom-left-radius: 40px;
   display: grid;
   grid-template-columns: 20% 50% 30%;
   grid-template-rows: 25% 75%;

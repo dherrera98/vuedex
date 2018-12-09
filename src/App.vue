@@ -20,19 +20,25 @@ export default {
 .pokedex {
   background-color: $retro-red;
   height: 100vh;
+  border-bottom-left-radius: 40px;
   border-top-left-radius: 40px;
+  width: 360px;
+  height: 640px;
 }
 #app {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .top {
-  position: absolute;
+  position: relative;
   top: 0;
 }
 
 .bottom {
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  bottom: -400px;
 }
 </style>

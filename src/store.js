@@ -9,7 +9,9 @@ export default new Vuex.Store({
   },
   mutations: {
     subNumDex(state) {
-      state.numDex = state.numDex + 1;
+      if (state.numDex < 10148) {
+        state.numDex = state.numDex + 1;
+      }
     },
     bajNumDex(state) {
       if (state.numDex > 1) {
