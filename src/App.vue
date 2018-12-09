@@ -2,6 +2,7 @@
   <div id="app">
     <div class="pokedex">
       <TopPokedex class="top"></TopPokedex>
+      <div class="middle"></div>
       <BottomPokedex class="bottom"></BottomPokedex>
     </div>
   </div>
@@ -18,12 +19,18 @@ export default {
 <style lang="scss" scoped>
 @import "./assets/sass/variables";
 .pokedex {
+  position: relative;
   background-color: $retro-red;
   height: 100vh;
-  border-bottom-left-radius: 40px;
   border-top-left-radius: 40px;
-  width: 360px;
-  height: 640px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 360px;
+  max-height: 640px;
+
+  @media (min-width: 361px) {
+    border-bottom-left-radius: 40px;
+  }
 }
 #app {
   height: 100vh;
@@ -31,14 +38,18 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
 .top {
-  position: relative;
+  position: absolute;
   top: 0;
 }
-
 .bottom {
-  position: relative;
-  bottom: -400px;
+  position: absolute;
+  bottom: 0;
+}
+.middle {
+  width: 339px;
+  height: 320px;
+  background-color: white;
+  margin: auto;
 }
 </style>
