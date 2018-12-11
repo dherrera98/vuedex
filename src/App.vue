@@ -2,17 +2,18 @@
   <div id="app">
     <div class="pokedex">
       <TopPokedex class="top"></TopPokedex>
-      <div class="middle"></div>
+      <ScreenPokedex class="middle"></ScreenPokedex>
       <BottomPokedex class="bottom"></BottomPokedex>
     </div>
   </div>
 </template>
 
 <script>
+import ScreenPokedex from "./components/pokedex-ui/ScreenPokedex.vue";
 import BottomPokedex from "./components/pokedex-ui/BottomPokedex.vue";
 import TopPokedex from "./components/pokedex-ui/TopPokedex.vue";
 export default {
-  components: { TopPokedex, BottomPokedex }
+  components: { TopPokedex, BottomPokedex, ScreenPokedex }
 };
 </script>
 
@@ -44,12 +45,11 @@ export default {
 }
 .bottom {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
 }
 .middle {
   width: 339px;
   height: 320px;
-  background-color: white;
   margin: auto;
   position: relative;
   top: 110px;
