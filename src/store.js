@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    numDex: 1
+    numDex: 1,
+    pokemon: {}
   },
   mutations: {
     subNumDex(state) {
@@ -19,5 +20,12 @@ export default new Vuex.Store({
       }
     }
   },
-  actions: {}
+  actions: {
+    apiNum(context, num, state) {
+      // fix
+      fetch(`https://pokeapi.co/api/v2/${num}`, { mode: "no-cors" })
+        .then(res => res.json())
+        .then(pokemon => (state.pokemon = pokemon));
+    }
+  }
 });

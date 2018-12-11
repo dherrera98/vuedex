@@ -1,19 +1,23 @@
 <template>
   <div>
-    <button @click="subNumDex()" @keyup.up="subNumDex()">1</button>
+    <button @click="subNumDex(), apiNum(numDex)" @keyup.up="subNumDex()">1</button>
     <button>2</button>
-    <button @click="bajNumDex()" @keyup.down="bajNumDex()">3</button>
+    <button @click="bajNumDex(), apiNum(numDex)" @keyup.down="bajNumDex()">3</button>
     <button>4</button>
     <button>5</button>
   </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions, mapState } from "vuex";
 export default {
   name: "DirectionalPad",
+  computed: {
+    ...mapState(["numDex"])
+  },
   methods: {
-    ...mapMutations(["subNumDex", "bajNumDex"])
+    ...mapMutations(["subNumDex", "bajNumDex"]),
+    ...mapActions(["apiNum"])
   }
 };
 </script>
