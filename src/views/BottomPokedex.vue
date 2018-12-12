@@ -4,8 +4,8 @@
       <BtnBlue class="btnBlue"></BtnBlue>
     </div>
     <div class="longButton-container">
-      <LongButton color="yellow" class="longButton"></LongButton>
-      <LongButton color="orange" class="longButton"></LongButton>
+      <LongButton color="yellow" class="longButton" @click.native="reset()"></LongButton>
+      <LongButton color="orange" class="longButton" @click.native="reset()"></LongButton>
     </div>
     <div class="screen-container">
       <RetroScreen class="retroScreen"></RetroScreen>
@@ -21,10 +21,14 @@ import DirectionalPad from "../components/pokedex-ui/DirectionalPad.vue";
 import RetroScreen from "../components/pokedex-ui/RetroScreen.vue";
 import LongButton from "../components/pokedex-ui/LongButton.vue";
 import BtnBlue from "../components/pokedex-ui/BtnBlue.vue";
+import { mapMutations } from "vuex";
 
 export default {
   name: "BottomPokedex",
-  components: { BtnBlue, LongButton, RetroScreen, DirectionalPad }
+  components: { BtnBlue, LongButton, RetroScreen, DirectionalPad },
+  methods: {
+    ...mapMutations(["reset"])
+  }
 };
 </script>
 <style lang="scss" scoped>
