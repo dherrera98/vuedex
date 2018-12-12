@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>{{numDex}}</span>
+    <input type="text" v-model="numDex">
   </div>
 </template>
 
@@ -20,14 +20,16 @@ export default {
 div {
   width: 143px;
   height: 61px;
-  background-color: $retro-green;
-  border: 1px solid $border-gray;
-  text-align: center;
-  span {
+
+  input {
     color: $dark-green;
     font-size: 26px;
     font-family: "Press Start 2P", cursive;
-    line-height: 61px;
+    width: 143px;
+    height: 61px;
+    text-align: center;
+    background-color: $retro-green;
+    border: 1px solid $border-gray;
   }
 }
 </style>

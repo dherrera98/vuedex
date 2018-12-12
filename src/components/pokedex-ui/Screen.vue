@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <pre>{{pokemon}}</pre>
+    <h2>{{pokemon.name}}</h2>
+    <img :src="pokemon.sprites.back_default" alt="image back">
+    <img :src="pokemon.sprites.front_default" alt="image front">
   </div>
 </template>
 
@@ -20,5 +22,6 @@ export default {
   height: 246px;
   background-color: white;
   border-radius: 5px;
+  font-family: "Press Start 2P", cursive;
 }
 </style>
