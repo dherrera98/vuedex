@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import DirectionalPad from "./DirectionalPad.vue";
-import RetroScreen from "./RetroScreen.vue";
-import LongButton from "./LongButton.vue";
-import BtnBlue from "./BtnBlue.vue";
+import DirectionalPad from "../components/pokedex-ui/DirectionalPad.vue";
+import RetroScreen from "../components/pokedex-ui/RetroScreen.vue";
+import LongButton from "../components/pokedex-ui/LongButton.vue";
+import BtnBlue from "../components/pokedex-ui/BtnBlue.vue";
 
 export default {
   name: "BottomPokedex",

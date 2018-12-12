@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import Led from "./Led.vue";
-import Screen from "./Screen.vue";
-import Speaker from "./Speaker.vue";
+import Led from "../components/pokedex-ui/Led.vue";
+import Screen from "../components/pokedex-ui/Screen.vue";
+import Speaker from "../components/pokedex-ui/Speaker.vue";
 export default {
   name: "ScreenPokedex",
   components: { Speaker, Screen, Led }
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/sass/_variables.scss";
+@import "/../assets/sass/_variables.scss";
 .screen-container {
   background-color: $retro-gray;
   border: 2px solid $border-gray;

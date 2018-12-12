@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import ScreenPokedex from "./components/pokedex-ui/ScreenPokedex.vue";
-import BottomPokedex from "./components/pokedex-ui/BottomPokedex.vue";
-import TopPokedex from "./components/pokedex-ui/TopPokedex.vue";
+import ScreenPokedex from "./views/ScreenPokedex.vue";
+import BottomPokedex from "./views/BottomPokedex.vue";
+import TopPokedex from "./views/TopPokedex.vue";
 export default {
   components: { TopPokedex, BottomPokedex, ScreenPokedex }
 };

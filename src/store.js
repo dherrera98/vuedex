@@ -18,14 +18,17 @@ export default new Vuex.Store({
       if (state.numDex > 1) {
         state.numDex = state.numDex - 1;
       }
+    },
+    verPokemon(state, pokemon) {
+      state.pokemon = pokemon;
     }
   },
   actions: {
-    apiNum(context, num, state) {
+    apiNum(context, num) {
       // fix
-      fetch(`https://pokeapi.co/api/v2/${num}`, { mode: "no-cors" })
+      fetch(`http://pokeapi.salestock.net/api/v2/pokemon/${num}`)
         .then(res => res.json())
-        .then(pokemon => (state.pokemon = pokemon));
+        .then(pokemon => context.commit("verPokemon", pokemon));
     }
   }
 });

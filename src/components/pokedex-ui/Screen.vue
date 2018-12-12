@@ -1,12 +1,16 @@
 <template>
   <div class="container">
-
+    <pre>{{pokemon}}</pre>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-  name: "Screen"
+  name: "Screen",
+  computed: {
+    ...mapState(["pokemon"])
+  }
 };
 </script>
 

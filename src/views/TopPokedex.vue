@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Led from "./Led.vue";
+import Led from "../components/pokedex-ui/Led.vue";
 
 export default {
   name: "TopPokedex",
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/sass/variables";
+@import "/../assets/sass/variables";
 
 .pokedex-top {
   background-color: $dark-red;
