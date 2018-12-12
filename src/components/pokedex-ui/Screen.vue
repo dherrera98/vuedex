@@ -36,13 +36,13 @@
           <li>Base xp: {{pokemon.base_experience}}</li>
         </ul>
       </div>
-      <div class="stats">
+      <!-- <div class="stats">
         <div>
           <p v-for="s in pokemon.stats" :key="s.stat.name">
             <span>{{s.base_stat}}</span> <br> <spam>{{s.stat.name}}</spam>
           </p>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
