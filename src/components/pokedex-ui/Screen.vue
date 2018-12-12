@@ -83,7 +83,7 @@ export default {
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 26px;
   color: $dark-green;
   text-align: center;
   margin: 0;
