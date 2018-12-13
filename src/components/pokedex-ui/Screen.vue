@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     updateApiName(e) {
-      this.$store.dispatch("apiName", e.target.value);
+      this.$store.dispatch("apiName", e.target.value.toLowerCase());
     }
   },
   filters: {
