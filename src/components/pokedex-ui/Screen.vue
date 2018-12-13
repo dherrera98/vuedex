@@ -10,20 +10,20 @@
         <span v-for="type in pokemon.types" :key="type.type.name"> {{type.type.name}} </span>
       </div>
       <div class="image-container">
-        <div class="back-default">
+        <div class="back-default" v-if="pokemon.sprites.back_default != null">
           <img :src="pokemon.sprites.back_default" alt="image back">
           <p>Back</p>
         </div>
-        <div class="front-default">
+        <div class="front-default" v-if="pokemon.sprites.front_default != null">
           <img :src="pokemon.sprites.front_default" alt="image front">
           <p>Front</p>
         </div>
-        <div class="back-shiny">
+        <div class="back-shiny" v-if="pokemon.sprites.back_shiny != null">
           <img :src="pokemon.sprites.back_shiny" alt="image shiny back">
           <p>Back</p>
           <p>Shiny</p>
         </div>
-        <div class="front-shiny">
+        <div class="front-shiny" v-if="pokemon.sprites.front_shiny != null">
           <img :src="pokemon.sprites.front_shiny" alt="image shiny front">
           <p>Front</p>
           <p>Shiny</p>
@@ -159,7 +159,7 @@ input {
   div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: first baseline;
     align-items: center;
   }
 
