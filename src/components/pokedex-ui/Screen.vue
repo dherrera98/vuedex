@@ -2,12 +2,15 @@
   <div class="container">
     <div v-if="pokemon == ''" class="search">
       <h2>Name</h2>
-      <input type="text" v-model="name" @keypress.enter="apiName(name), name = ''">
+      <input type="text" :value="namePokemon" @input="updateApiName">
       <p class="err" v-if="pokemon.detail == 'Not found.'">Error search pokemon</p>
       <p class="err">{{pokemon}}</p>
     </div>
     <div v-else class="search-container">
-      <h2>{{pokemon.name | capitalLetter}}</h2>
+      <h2>{{pokemon.name | capitalLetter | maxLetter}}</h2>
+      <div class="type">
+        <span v-for="type in pokemon.types" :key="type.type.name"> {{type.type.name}} </span>
+      </div>
       <div class="image-container">
         <div class="back-default">
           <img :src="pokemon.sprites.back_default" alt="image back">
@@ -30,9 +33,8 @@
       </div>
       <div class="list-prop">
         <ul>
-          <li>Types: <span v-for="type in pokemon.types" :key="type.type.name"> {{type.type.name}} </span></li>
-          <li>Weight: {{pokemon.weight}}</li>
-          <li>Height: {{pokemon.height}}</li>
+          <li>Weight: {{pokemon.weight / 10}} kg</li>
+          <li>Height: {{pokemon.height / 10}} m</li>
           <li>Base xp: {{pokemon.base_experience}}</li>
         </ul>
       </div>
@@ -58,23 +60,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 export default {
   name: "Screen",
-  data() {
-    return {
-      name: ""
-    };
-  },
   computed: {
-    ...mapState(["pokemon"])
+    ...mapState(["pokemon", "namePokemon"])
   },
   methods: {
-    ...mapActions(["apiName"])
+    updateApiName(e) {
+      this.$store.dispatch("apiName", e.target.value);
+    }
   },
   filters: {
     capitalLetter: function(word) {
       return word.charAt(0).toUpperCase() + word.slice(1);
+    },
+    maxLetter(word) {
+      return word.slice(0, 11);
     }
   }
 };
@@ -99,7 +101,7 @@ h2 {
   margin: 0;
   padding: 0;
   text-decoration: underline;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .search {
   display: flex;
@@ -123,11 +125,11 @@ input {
 }
 .search-container {
   display: grid;
-  grid-template-columns: auto / auto / auto;
-  grid-template-rows: auto / auto / auto / auto;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto auto;
 
   h2 {
-    grid-column: 1 / 5;
+    grid-column: 1 / 3;
     grid-row: 1 / 2;
   }
 
@@ -136,9 +138,18 @@ input {
   }
 }
 
+.type {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  text-align: center;
+  font-size: 10px;
+  color: $dark-green;
+  margin-bottom: 10px;
+}
+
 .image-container {
   grid-column: 1 / 2;
-  grid-row: 2 / 4;
+  grid-row: 3 / 5;
   display: grid;
   grid-template-columns: 60px / 60px;
   grid-template-columns: 60px / 60px;
@@ -184,8 +195,8 @@ input {
 }
 
 .list-prop {
-  grid-row: 2 / 3;
   grid-column: 2 / 3;
+  grid-row: 3 / 4;
   ul {
     padding-left: 10px;
   }
@@ -199,7 +210,7 @@ input {
 }
 
 .stats {
-  grid-row: 3 / 4;
+  grid-row: 4 / 5;
   grid-column: 2 / 3;
   table,
   th,

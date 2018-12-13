@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="numDex">
+    <input type="text" :value="numDex" @input="updatedApiNum">
   </div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
   name: "RetroScreen",
   computed: {
     ...mapState(["numDex"])
+  },
+  methods: {
+    updatedApiNum(e) {
+      this.$store.dispatch("apiNum", e.target.value);
+    }
   }
 };
 </script>
