@@ -204,10 +204,11 @@ input {
   table,
   th,
   td {
-    border: 1px solid $dark-gray;
+    border: 1px solid $dark-green;
   }
   th {
     font-size: 10px;
+    color: $dark-green;
   }
   td {
     font-size: 7px;
