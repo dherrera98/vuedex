@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" :value="numDex" @input="updatedApiNum">
+    <input type="text" :value="numDex" @input="updatedApiNum" placeholder="---">
   </div>
 </template>
 
