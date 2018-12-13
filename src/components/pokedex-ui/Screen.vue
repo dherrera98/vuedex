@@ -1,59 +1,80 @@
 <template>
   <div class="container">
-    <div v-if="pokemon == ''" class="search">
-      <h2>Name</h2>
-      <input type="text" :value="namePokemon" @input="updateApiName" class="inputSearch">
-    </div>
-    <div v-else class="search-container">
-      <h2>{{pokemon.name | capitalLetter | maxLetter}}</h2>
-      <div class="type">
-        <span v-for="type in pokemon.types" :key="type.type.name"> {{type.type.name}} </span>
+    <transition name="fade" mode="out-in">
+      <div class="search" key="1" v-if="pokemon == ''">
+        <h2>Name</h2>
+        <input type="text" :value="namePokemon" @input="updateApiName" class="inputSearch">
       </div>
-      <div class="image-container">
-        <div class="back-default" v-if="pokemon.sprites.back_default != null">
-          <img :src="pokemon.sprites.back_default" alt="image back">
-          <p>Back</p>
+
+      <div class="search-container" key="2" v-else>
+        <h2>{{pokemon.name | capitalLetter | maxLetter}}</h2>
+        <div class="type">
+          <span v-for="type in pokemon.types" :key="type.type.name">{{type.type.name}}</span>
         </div>
-        <div class="front-default" v-if="pokemon.sprites.front_default != null">
-          <img :src="pokemon.sprites.front_default" alt="image front">
-          <p>Front</p>
+        <div class="image-container">
+          <div class="back-default" v-if="pokemon.sprites.back_default != null">
+            <img :src="pokemon.sprites.back_default" alt="image back">
+            <p>Back</p>
+          </div>
+          <div class="front-default" v-if="pokemon.sprites.front_default != null">
+            <img :src="pokemon.sprites.front_default" alt="image front">
+            <p>Front</p>
+          </div>
+          <div class="back-shiny" v-if="pokemon.sprites.back_shiny != null">
+            <img :src="pokemon.sprites.back_shiny" alt="image shiny back">
+            <p>Back</p>
+            <p>Shiny</p>
+          </div>
+          <div class="front-shiny" v-if="pokemon.sprites.front_shiny != null">
+            <img :src="pokemon.sprites.front_shiny" alt="image shiny front">
+            <p>Front</p>
+            <p>Shiny</p>
+          </div>
         </div>
-        <div class="back-shiny" v-if="pokemon.sprites.back_shiny != null">
-          <img :src="pokemon.sprites.back_shiny" alt="image shiny back">
-          <p>Back</p>
-          <p>Shiny</p>
+        <div class="list-prop">
+          <ul>
+            <li>Weight: {{pokemon.weight / 10}} kg</li>
+            <li>Height: {{pokemon.height / 10}} m</li>
+            <li>Base xp: {{pokemon.base_experience}}</li>
+          </ul>
         </div>
-        <div class="front-shiny" v-if="pokemon.sprites.front_shiny != null">
-          <img :src="pokemon.sprites.front_shiny" alt="image shiny front">
-          <p>Front</p>
-          <p>Shiny</p>
+        <div class="stats">
+          <table>
+            <tr>
+              <th colspan="3">Stats</th>
+            </tr>
+            <tr>
+              <td>
+                <span class="number">{{pokemon.stats[0].base_stat}}</span>
+                {{pokemon.stats[0].stat.name}}
+              </td>
+              <td>
+                <span class="number">{{pokemon.stats[1].base_stat}}</span>
+                {{pokemon.stats[1].stat.name}}
+              </td>
+              <td>
+                <span class="number">{{pokemon.stats[2].base_stat}}</span>
+                {{pokemon.stats[2].stat.name}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="number">{{pokemon.stats[3].base_stat}}</span>
+                {{pokemon.stats[3].stat.name}}
+              </td>
+              <td>
+                <span class="number">{{pokemon.stats[4].base_stat}}</span>
+                {{pokemon.stats[4].stat.name}}
+              </td>
+              <td>
+                <span class="number">{{pokemon.stats[5].base_stat}}</span>
+                {{pokemon.stats[5].stat.name}}
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
-      <div class="list-prop">
-        <ul>
-          <li>Weight: {{pokemon.weight / 10}} kg</li>
-          <li>Height: {{pokemon.height / 10}} m</li>
-          <li>Base xp: {{pokemon.base_experience}}</li>
-        </ul>
-      </div>
-       <div class="stats">
-        <table>
-          <tr>
-            <th colspan="3">Stats</th>
-          </tr>
-          <tr>
-            <td><span class="number">{{pokemon.stats[0].base_stat}}</span> {{pokemon.stats[0].stat.name}}</td>
-            <td><span class="number">{{pokemon.stats[1].base_stat}}</span> {{pokemon.stats[1].stat.name}}</td>
-            <td><span class="number">{{pokemon.stats[2].base_stat}}</span> {{pokemon.stats[2].stat.name}}</td>
-          </tr>
-          <tr>
-            <td><span class="number">{{pokemon.stats[3].base_stat}}</span> {{pokemon.stats[3].stat.name}}</td>
-            <td><span class="number">{{pokemon.stats[4].base_stat}}</span> {{pokemon.stats[4].stat.name}}</td>
-            <td><span class="number">{{pokemon.stats[5].base_stat}}</span> {{pokemon.stats[5].stat.name}}</td>
-          </tr>
-        </table>
-      </div> 
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -228,5 +249,15 @@ input {
       display: block;
     }
   }
+}
+
+// Transition
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
