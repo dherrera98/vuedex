@@ -36,13 +36,23 @@
           <li>Base xp: {{pokemon.base_experience}}</li>
         </ul>
       </div>
-      <!-- <div class="stats">
-        <div>
-          <p v-for="s in pokemon.stats" :key="s.stat.name">
-            <span>{{s.base_stat}}</span> <br> <spam>{{s.stat.name}}</spam>
-          </p>
-        </div>
-      </div> -->
+       <div class="stats">
+        <table>
+          <tr>
+            <th colspan="3">Stats</th>
+          </tr>
+          <tr>
+            <td><span class="number">{{pokemon.stats[0].base_stat}}</span> {{pokemon.stats[0].stat.name}}</td>
+            <td><span class="number">{{pokemon.stats[1].base_stat}}</span> {{pokemon.stats[1].stat.name}}</td>
+            <td><span class="number">{{pokemon.stats[2].base_stat}}</span> {{pokemon.stats[2].stat.name}}</td>
+          </tr>
+          <tr>
+            <td><span class="number">{{pokemon.stats[3].base_stat}}</span> {{pokemon.stats[3].stat.name}}</td>
+            <td><span class="number">{{pokemon.stats[4].base_stat}}</span> {{pokemon.stats[4].stat.name}}</td>
+            <td><span class="number">{{pokemon.stats[5].base_stat}}</span> {{pokemon.stats[5].stat.name}}</td>
+          </tr>
+        </table>
+      </div> 
     </div>
   </div>
 </template>
@@ -191,14 +201,22 @@ input {
 .stats {
   grid-row: 3 / 4;
   grid-column: 2 / 3;
-  display: grid;
-  grid-template-columns: auto / auto / auto;
-  grid-template-rows: auto / auto;
-  div:nth-child(1) {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    p {
-      font-size: 10px;
+  table,
+  th,
+  td {
+    border: 1px solid $dark-green;
+  }
+  th {
+    font-size: 10px;
+    color: $dark-green;
+  }
+  td {
+    font-size: 7px;
+    color: $dark-green;
+    padding: 3px 3px;
+    text-align: center;
+    .number {
+      display: block;
     }
   }
 }
