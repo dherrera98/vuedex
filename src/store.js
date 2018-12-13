@@ -26,7 +26,7 @@ export default new Vuex.Store({
     },
     verPokemonName(state, pokemon) {
       state.pokemon = pokemon;
-      state.numDex = state.pokemon.order;
+      state.numDex = state.pokemon.id;
     },
     verPokemonNum(state, pokemon) {
       state.namePokemon = "";

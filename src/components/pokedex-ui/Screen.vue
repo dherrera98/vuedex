@@ -2,9 +2,7 @@
   <div class="container">
     <div v-if="pokemon == ''" class="search">
       <h2>Name</h2>
-      <input type="text" :value="namePokemon" @input="updateApiName">
-      <p class="err" v-if="pokemon.detail == 'Not found.'">Error search pokemon</p>
-      <p class="err">{{pokemon}}</p>
+      <input type="text" :value="namePokemon" @input="updateApiName" class="inputSearch">
     </div>
     <div v-else class="search-container">
       <h2>{{pokemon.name | capitalLetter | maxLetter}}</h2>
@@ -107,6 +105,10 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .inputSearch {
+    margin-top: 20px;
+  }
 }
 
 input {
@@ -118,11 +120,7 @@ input {
   font-size: 26px;
   border: 2px solid $dark-green;
 }
-.err {
-  font-size: 14px;
-  color: $retro-red;
-  word-spacing: -4px;
-}
+
 .search-container {
   display: grid;
   grid-template-columns: auto auto;
