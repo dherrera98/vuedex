@@ -30,8 +30,8 @@ export default new Vuex.Store({
     },
     verPokemonNum(state, pokemon) {
       state.namePokemon = "";
-      state.numDex = state.pokemon.id;
       state.pokemon = pokemon;
+      state.numDex = state.pokemon.id;
     },
     reset(state) {
       (state.namePokemon = ""), (state.numDex = ""), (state.pokemon = "");
