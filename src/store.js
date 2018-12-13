@@ -38,12 +38,12 @@ export default new Vuex.Store({
   },
   actions: {
     apiNum(context, num) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${num}`)
+      fetch(`https://pokeapi-215911.firebaseapp.com/api/v2/pokemon/${num}`)
         .then(res => res.json())
         .then(pokemon => context.commit("verPokemonNum", pokemon));
     },
     apiName(context, name) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+      fetch(`https://pokeapi-215911.firebaseapp.com/api/v2/pokemon/${name}`)
         .then(res => res.json())
         .then(pokemon => context.commit("verPokemonName", pokemon));
     }
