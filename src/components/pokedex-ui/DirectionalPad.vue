@@ -1,23 +1,23 @@
 <template>
   <div>
-    <button @click="subNumDex(), apiNum(numDex)" @keyup.up="subNumDex()">1</button>
-    <button>2</button>
-    <button @click="bajNumDex(), apiNum(numDex)" @keyup.down="bajNumDex()">3</button>
-    <button>4</button>
-    <button>5</button>
+    <button @click="subNumDex(), apiNum(numDex)" @keyup.up="subNumDex()"><div class="arrow arrow-up"></div></button>
+    <button><div class="circle"></div></button>
+    <button @click="bajNumDex(), apiNum(numDex)" @keyup.down="bajNumDex()"><div class="arrow arrow-down"></div></button>
+    <button><div class="arrow arrow-left" @click="bajNumDex(), apiNum(numDex)"></div></button>
+    <button><div class="arrow arrow-right" @click="subNumDex(), apiNum(numDex)"></div></button>
   </div>
 </template>
 
 <script>
-import { mapMutations, mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
 export default {
   name: "DirectionalPad",
   computed: {
     ...mapState(["numDex"])
   },
   methods: {
-    ...mapMutations(["subNumDex", "bajNumDex"]),
-    ...mapActions(["apiNum"])
+    ...mapActions(["apiNum"]),
+    ...mapMutations(["subNumDex", "bajNumDex"])
   }
 };
 </script>
@@ -36,6 +36,9 @@ button {
   width: 100%;
   height: 100%;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $gray;
 }
 button:nth-child(1) {
@@ -65,5 +68,38 @@ button:nth-child(5) {
   grid-row: 2 / 3;
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
+}
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: $dark-gray;
+}
+.arrow {
+  width: 0;
+  height: 0;
+}
+.arrow-up {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid $dark-gray;
+}
+
+.arrow-down {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid $dark-gray;
+}
+
+.arrow-right {
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid $dark-gray;
+}
+
+.arrow-left {
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid $dark-gray;
 }
 </style>
