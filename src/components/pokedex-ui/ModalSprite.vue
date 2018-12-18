@@ -1,8 +1,10 @@
 <template>
-  <div class="container" v-if="showModal">
-    <div class="close" @click="modalUpdate()">X</div>
-    <img :src="sprite" alt="sprite">
-  </div>
+  <transition name="fade">  
+    <div class="container" v-if="showModal">
+      <div class="close" @click="modalUpdate()">X</div>
+      <img :src="sprite" alt="sprite">
+    </div>
+  </transition>
 </template>
 
 <script>

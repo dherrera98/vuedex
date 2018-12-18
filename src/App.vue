@@ -23,13 +23,13 @@ export default {
   position: relative;
   background-color: $retro-red;
   height: 100vh;
-  border-top-left-radius: 40px;
   width: 100vw;
   height: 100vh;
   max-width: 360px;
   max-height: 640px;
 
   @media (min-width: 361px) {
+    border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
   }
 }
@@ -38,6 +38,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("./assets/background.png");
+  background-size: cover;
 }
 .top {
   position: absolute;
@@ -53,5 +55,17 @@ export default {
   margin: auto;
   position: relative;
   top: 110px;
+}
+</style>
+
+<style lang="scss">
+// Transition
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
