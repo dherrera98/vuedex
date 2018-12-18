@@ -25,7 +25,10 @@ export default {
   background-color: $dark-red;
   width: 100%;
   height: 80px;
-  border-top-left-radius: 40px;
+
+  @media (min-width: 361px) {
+    border-top-left-radius: 40px;
+  }
 }
 
 .leds-container {
