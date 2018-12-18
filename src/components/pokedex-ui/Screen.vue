@@ -13,20 +13,20 @@
         </div>
         <div class="image-container">
           <div class="back-default" v-if="pokemon.sprites.back_default != null">
-            <img :src="pokemon.sprites.back_default" alt="image back">
+            <img :src="pokemon.sprites.back_default" alt="image back" @click="sprite=pokemon.sprites.back_default, modalUpdate()">
             <p>Back</p>
           </div>
           <div class="front-default" v-if="pokemon.sprites.front_default != null">
-            <img :src="pokemon.sprites.front_default" alt="image front">
+            <img :src="pokemon.sprites.front_default" alt="image front" @click="sprite=pokemon.sprites.front_default, modalUpdate()">
             <p>Front</p>
           </div>
           <div class="back-shiny" v-if="pokemon.sprites.back_shiny != null">
-            <img :src="pokemon.sprites.back_shiny" alt="image shiny back">
+            <img :src="pokemon.sprites.back_shiny" alt="image shiny back" @click="sprite=pokemon.sprites.back_shiny, modalUpdate()">
             <p>Back</p>
             <p>Shiny</p>
           </div>
           <div class="front-shiny" v-if="pokemon.sprites.front_shiny != null">
-            <img :src="pokemon.sprites.front_shiny" alt="image shiny front">
+            <img :src="pokemon.sprites.front_shiny" alt="image shiny front" @click="sprite=pokemon.sprites.front_shiny, modalUpdate()">
             <p>Front</p>
             <p>Shiny</p>
           </div>
@@ -73,19 +73,28 @@
             </tr>
           </table>
         </div>
+        <ModalSprite class="modal" :sprite="sprite"></ModalSprite>
       </div>
     </transition>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import ModalSprite from "./ModalSprite.vue";
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "Screen",
+  data() {
+    return {
+      sprite: ""
+    };
+  },
+  components: { ModalSprite },
   computed: {
     ...mapState(["pokemon", "namePokemon"])
   },
   methods: {
+    ...mapMutations(["modalUpdate"]),
     updateApiName(e) {
       this.$store.dispatch("apiName", e.target.value.toLowerCase());
     }
@@ -249,6 +258,12 @@ input {
       display: block;
     }
   }
+}
+.modal {
+  width: 295px;
+  height: 200px;
+  position: absolute;
+  z-index: 10;
 }
 
 // Transition

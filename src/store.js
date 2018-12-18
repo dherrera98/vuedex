@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     numDex: "",
     namePokemon: "",
-    pokemon: ""
+    pokemon: "",
+    showModal: false
   },
   mutations: {
     subNumDex(state) {
@@ -24,29 +25,32 @@ export default new Vuex.Store({
         state.numDex = state.numDex - 1;
       }
     },
-    verPokemonName(state, pokemon) {
+    updatePokemonName(state, pokemon) {
       state.pokemon = pokemon;
       state.numDex = state.pokemon.id;
     },
-    verPokemonNum(state, pokemon) {
+    updatePokemonNum(state, pokemon) {
       state.namePokemon = "";
       state.pokemon = pokemon;
       state.numDex = state.pokemon.id;
     },
     reset(state) {
       (state.namePokemon = ""), (state.numDex = ""), (state.pokemon = "");
+    },
+    modalUpdate(state) {
+      state.showModal = !state.showModal;
     }
   },
   actions: {
     apiNum(context, num) {
       fetch(`https://pokeapi-215911.firebaseapp.com/api/v2/pokemon/${num}`)
         .then(res => res.json())
-        .then(pokemon => context.commit("verPokemonNum", pokemon));
+        .then(pokemon => context.commit("updatePokemonNum", pokemon));
     },
     apiName(context, name) {
       fetch(`https://pokeapi-215911.firebaseapp.com/api/v2/pokemon/${name}`)
         .then(res => res.json())
-        .then(pokemon => context.commit("verPokemonName", pokemon));
+        .then(pokemon => context.commit("updatePokemonName", pokemon));
     }
   }
 });
