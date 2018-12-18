@@ -9,7 +9,7 @@
       <div class="search-container" key="2" v-else>
         <h2>{{pokemon.name | capitalLetter | maxLetter}}</h2>
         <div class="type">
-          <span v-for="type in pokemon.types" :key="type.type.name">{{type.type.name}}</span>
+          <span v-for="type in pokemon.types" :key="type.type.name"> {{type.type.name}} </span>
         </div>
         <div class="image-container">
           <div class="back-default" v-if="pokemon.sprites.back_default != null">
