@@ -1,4 +1,6 @@
 # vuedex
+## DEMO
+https://vuedex.tk
 
 ## Project setup
 ```
